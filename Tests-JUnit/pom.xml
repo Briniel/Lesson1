@@ -23,7 +23,7 @@
             <artifactId>model</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
+        <!--log4j-->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
@@ -34,6 +34,7 @@
             <artifactId>log4j-core</artifactId>
             <version>2.13.2</version>
         </dependency>
+        <!--webdrivermanager-->
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
@@ -43,6 +44,12 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>3.141.59</version>
+        </dependency>
+        <!--owner-->
+        <dependency>
+            <groupId>org.aeonbits.owner</groupId>
+            <artifactId>owner-java8</artifactId>
+            <version>1.0.8</version>
         </dependency>
         <dependency>
             <groupId>org.aeonbits.owner</groupId>

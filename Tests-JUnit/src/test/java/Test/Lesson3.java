@@ -1,7 +1,12 @@
+package Test;
+
+import Proper.SettingConfig;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.aeonbits.owner.ConfigFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +16,7 @@ public class Lesson3 {
 
     private Logger logger = LogManager.getLogger(Lesson3.class);
     protected static WebDriver driver;
+    private SettingConfig cfg = ConfigFactory.create(SettingConfig.class);
 
     @Test
     public void logExamlpe() {
@@ -40,7 +46,11 @@ public class Lesson3 {
     @Test
     public void webDriverTest() {
         logger.info("Запуск браузера");
-        driver.get("https://otus.ru/");
+        driver.get("https://" + cfg.url() + "/");
+        String url = driver.getTitle();
+        Assert.assertTrue("ОШИБКА! Ожидалось " + cfg.url() + " открылся сайт"  + url,
+                url.contains(cfg.url()));
         logger.info("Браузер запущен");
     }
+
 }
