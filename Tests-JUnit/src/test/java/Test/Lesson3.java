@@ -1,6 +1,6 @@
 package Test;
 
-import Proper.SettingConfig;
+import Config.SettingConfig;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.aeonbits.owner.ConfigFactory;
 import org.apache.logging.log4j.LogManager;
@@ -14,7 +14,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Lesson3 {
 
-    private Logger logger = LogManager.getLogger(Lesson3.class);
+    private static Logger logger = LogManager.getLogger(Lesson3.class);
     protected static WebDriver driver;
     private SettingConfig cfg = ConfigFactory.create(SettingConfig.class);
 
@@ -45,11 +45,12 @@ public class Lesson3 {
 
     @Test
     public void webDriverTest() {
+        String url = "https://" + cfg.url() + "/";
         logger.info("Запуск браузера");
-        driver.get("https://" + cfg.url() + "/");
-        String url = driver.getTitle();
-        Assert.assertTrue("ОШИБКА! Ожидалось " + cfg.url() + " открылся сайт"  + url,
-                url.contains(cfg.url()));
+        driver.get(url);
+        String urlCheck = driver.getCurrentUrl();
+        Assert.assertTrue("ОШИБКА! Ожидалось " + url + " открылся сайт"  + urlCheck,
+                urlCheck.contains(url));
         logger.info("Браузер запущен");
     }
 
