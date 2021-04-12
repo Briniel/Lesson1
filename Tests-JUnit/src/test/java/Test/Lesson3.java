@@ -44,13 +44,10 @@ public class Lesson3 {
     }
 
     @Test
-    public void webDriverTest() {
-        String url = "https://" + cfg.url() + "/";
+    public void checkTitlePage() {
         logger.info("Запуск браузера");
-        driver.get(url);
-        String urlCheck = driver.getCurrentUrl();
-        Assert.assertTrue("ОШИБКА! Ожидалось " + url + " открылся сайт"  + urlCheck,
-                urlCheck.contains(url));
+        driver.get(cfg.url());
+        Assert.assertEquals("Некоторое сообщение в ассерте", driver.getTitle(), "Онлайн‑курсы для профессионалов, дистанционное обучение современным профессиям");
         logger.info("Браузер запущен");
     }
 
