@@ -1,7 +1,12 @@
+package Test;
+
+import Config.SettingConfig;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.aeonbits.owner.ConfigFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -9,8 +14,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Lesson3 {
 
-    private Logger logger = LogManager.getLogger(Lesson3.class);
+    private static Logger logger = LogManager.getLogger(Lesson3.class);
     protected static WebDriver driver;
+    private SettingConfig cfg = ConfigFactory.create(SettingConfig.class);
 
     @Test
     public void logExamlpe() {
@@ -38,9 +44,11 @@ public class Lesson3 {
     }
 
     @Test
-    public void webDriverTest() {
+    public void checkTitlePage() {
         logger.info("Запуск браузера");
-        driver.get("https://otus.ru/");
+        driver.get(cfg.url());
+        Assert.assertEquals("ОШИБКА!!! Не корректное значение в title.", driver.getTitle(), "Онлайн‑курсы для профессионалов, дистанционное обучение современным профессиям");
         logger.info("Браузер запущен");
     }
+
 }
