@@ -47,7 +47,7 @@ public class Lesson3 {
     public void checkTitlePage() {
         logger.info("Запуск браузера");
         driver.get(cfg.url());
-        Assert.assertEquals("Некоторое сообщение в ассерте", driver.getTitle(), "Онлайн‑курсы для профессионалов, дистанционное обучение современным профессиям");
+        Assert.assertEquals("ОШИБКА!!! Не корректное значение в title.", driver.getTitle(), "Онлайн‑курсы для профессионалов, дистанционное обучение современным профессиям");
         logger.info("Браузер запущен");
     }
 
